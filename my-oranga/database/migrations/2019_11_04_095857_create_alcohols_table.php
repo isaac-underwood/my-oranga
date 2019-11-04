@@ -14,7 +14,14 @@ class CreateAlcoholsTable extends Migration
     public function up()
     {
         Schema::create('alcohols', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('nutrition_id')->unsigned();
+            $table->foreign('nutrition_id')->references('id')->on('nutrition');
+            $table->date('date');
+            $table->string('item');
+            $table->integer('standard_drink');
             $table->timestamps();
         });
     }
