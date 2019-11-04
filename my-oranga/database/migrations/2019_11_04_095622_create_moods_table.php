@@ -14,7 +14,11 @@ class CreateMoodsTable extends Migration
     public function up()
     {
         Schema::create('moods', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->date('date');
+            $table->integer('indicator');
             $table->timestamps();
         });
     }
