@@ -1,0 +1,11 @@
+.fas{
+    font-size: 3em !important;
+}
+
+.header{
+    height: 30vh !important;
+}
+
+.header h1{
+    padding-top: 10vh;
+}
