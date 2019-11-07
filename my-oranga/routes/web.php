@@ -10,11 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::resource('/activities', 'ActivityController')->middleware('auth');
+Route::resource('/alcohol', 'AlcoholController')->middleware('auth');
+Route::resource('/moods', 'MoodController')->middleware('auth');
+Route::resource('/sleep', 'SleepController')->middleware('auth');
+Route::resource('/snacks', 'SnackController')->middleware('auth');
+Route::resource('/targets', 'TargetController')->middleware('auth');
+Route::resource('/weights', 'WeightController')->middleware('auth');
