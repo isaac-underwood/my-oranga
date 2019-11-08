@@ -131,6 +131,78 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{asset('js/app.js')}}"></script> {{-- <- bootstrap and jquery --}}
+    @if(session('status')) {{-- <- If session key exists --}}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{session('status')}} {{-- <- Display the session value --}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    <script>
+        //close the alert after 3 seconds.
+        $(document).ready(function(){
+        setTimeout(function() {
+            $(".alert").alert('close');
+        }, 6000);
+        });
+    </script>
+    <style>
+    .alert{
+        z-index: 99;
+        top: 60px;
+        right:18px;
+        min-width:30%;
+        position: fixed;
+        animation: slide 0.3s forwards;
+    }
+    @keyframes slide {
+        100% { top: 30px; }
+    }
+    @media screen and (max-width: 668px) {
+        .alert{ /* center the alert on small screens */
+            left: 10px;
+            right: 10px; 
+        }
+    }
+    .wrapper { 
+    height: 100%;
+    width: 100%;
+    left:0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    background-size: 1800% 1800%;
+
+    -webkit-animation: rainbow 18s ease infinite;
+    -z-animation: rainbow 18s ease infinite;
+    -o-animation: rainbow 18s ease infinite;
+    animation: rainbow 18s ease infinite;}
+
+    @-webkit-keyframes rainbow {
+        0%{background-position:0% 82%}
+        50%{background-position:100% 19%}
+        100%{background-position:0% 82%}
+    }
+    @-moz-keyframes rainbow {
+        0%{background-position:0% 82%}
+        50%{background-position:100% 19%}
+        100%{background-position:0% 82%}
+    }
+    @-o-keyframes rainbow {
+        0%{background-position:0% 82%}
+        50%{background-position:100% 19%}
+        100%{background-position:0% 82%}
+    }
+    @keyframes rainbow { 
+        0%{background-position:0% 82%}
+        50%{background-position:100% 19%}
+        100%{background-position:0% 82%}
+    }
+    </style>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
