@@ -13,7 +13,7 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="start-date">Start Date</label>
-                    <input type="date" name="start-date" class="form-control" id="start-date" aria-describedby="dateHelp">
+                    <input type="date" name="start_date" class="form-control" id="start-date" aria-describedby="dateHelp">
                 </div>
                 <div class="form-group col-md-6">
                     <span>
@@ -21,21 +21,21 @@
                         <input type="checkbox" id="same-as-start">
                         <label for="same-as-start">Same as Start Date</label>
                     </span>
-                    <input type="date" name="end-date" class="form-control" id="end-date" aria-describedby="dateHelp">
+                    <input type="date" name="end_date" class="form-control" id="end-date" aria-describedby="dateHelp">
                 </div>
             </div>
             <div class="form-group">
                 <label for="activity">Activity</label>
-                <input type="text" class="form-control" id="activity" placeholder="e.g. Run, Walk, Skate, Surf, etc.">
+                <input type="text" class="form-control" name="activity" id="activity" placeholder="e.g. Run, Walk, Skate, Surf, etc.">
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="time">Time (in minutes)</label>
-                    <input type="number" name="time" class="form-control" id="time" aria-describedby="numberHelp" step="0.01">
+                    <input type="number" name="time" class="form-control" id="time" aria-describedby="numberHelp" step="0.01" placeholder="0">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="distance">Distance (in kilometres)</label>
-                    <input type="number" name="distance" class="form-control" id="distance" aria-describedby="numberHelp" step="0.01">
+                    <input type="number" name="distance" class="form-control" id="distance" aria-describedby="numberHelp" step="0.01" placeholder="0">
                 </div>
             </div>
             <a href="{{ URL()->previous() }}" class="btn btn-danger float-left">x Cancel</a>

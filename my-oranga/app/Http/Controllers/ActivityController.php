@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Activity;
+use Auth;
 
 class ActivityController extends Controller
 {
@@ -34,7 +36,33 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation rules
+        $rules = [
+            'start-date' => 'required|date',
+            'end-date'  => 'required|date',
+            'activity'     =>  'required|string|min:1',
+            'time' => 'required|numeric',
+            'distance' => 'required|numeric'
+        ];
+        //custom validation error messages
+        $messages = [
+            '*.required' => 'Please fill out this field.',
+        ];
+        //First Validate the form data
+        // $request->validate($rules,$messages);
+        
+        $activity = new Activity;
+        $activity->user_id = Auth::user()->id;
+        $activity->date = $request->start_date;
+        // $acitivty->end_date = $request->end_date;
+        $activity->type = $request->activity;
+        $activity->minutes = $request->time;
+        $activity->distance = $request->distance;
+        $activity->save();
+
+        return redirect()
+            ->route('activities.create')
+            ->with('status','Added ' . $activity->minutes . ' minute ' . $activity->type . ' on ' . $activity->date);
     }
 
     /**
@@ -56,7 +84,8 @@ class ActivityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $activity = Activity::find($id);
+        return view('activities.edit', compact('activity'));
     }
 
     /**
