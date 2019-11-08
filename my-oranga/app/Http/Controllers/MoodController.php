@@ -23,7 +23,7 @@ class MoodController extends Controller
      */
     public function create()
     {
-        //
+        return view('moods.create');
     }
 
     /**
