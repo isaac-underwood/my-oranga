@@ -1,45 +1,51 @@
 @extends('layouts.app')
 @section('content')
     <div class="header">
-        <h1 class="text-center">Edit {{$activity->type}} Activity</h1>
-        <div class="task-icons text-center">
-            <i class="fas fa-running p-2"></i>
-            <i class="fas fa-biking p-2"></i>
+        <h1 class="text-center">Edit Mood</h1>
+        <div class=" text-center">
+            <i class="far fa-sad-tear fa-3x p-2"></i>
+            <i class="far fa-meh fa-3x p-2"></i>
+            <i class="far fa-smile-beam fa-3x p-2"></i>
         </div>
     </div>
     <div class="container">
-        <form action="{{route('activities.update', $activity->id)}}" method="post" class="form">
+        <h5 class="text-center">You're editing your mood for</h5>
+        <h4 class="text-center">{{date('l', strtotime($mood->date))}} the {{date('jS', strtotime($mood->date))}} of {{date('F', strtotime($mood->date))}}, {{date('Y', strtotime($mood->date))}}</h4>
+        <h4 class="text-center">It was a <b>{{$mood->indicator}}</b></h4>
+        <form action="{{route('moods.update', $mood->id)}}" method="post" class="form">
             @csrf
+            {{ method_field('PATCH') }}
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="start-date">Start Date</label>
-                    <input type="date" value="{{$activity->date}}" name="start-date" class="form-control" id="start-date" aria-describedby="dateHelp">
+                <div class="form-group col-md-12">
+                    <label for="date">Date</label>
+                    <input type="date" name="date" value="{{$mood->date}}" class="form-control {{$errors->has('date') ? 'is-invalid' : '' }}" id="date" aria-describedby="dateHelp">
+                    @if($errors->has('date'))
+                        <span class="invalid-feedback font-weight-bold">
+                            * {{$errors->first('date')}}
+                        </span>
+                    @endif
                 </div>
-                <div class="form-group col-md-6">
-                    <span>
-                        <label for="end-date" class="pr-4">End Date</label>
-                        <input type="checkbox" id="same-as-start">
-                        <label for="same-as-start">Same as Start Date</label>
-                    </span>
-                    <input type="date" name="end-date" class="form-control" id="end-date" aria-describedby="dateHelp">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="activity">Activity</label>
-                <input type="text" value="{{$activity->type}}" class="form-control" id="activity" placeholder="e.g. Run, Walk, Skate, Surf, etc.">
             </div>
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="time">Time (in minutes)</label>
-                    <input type="number" value="{{$activity->minutes}}" name="time" class="form-control" id="time" aria-describedby="numberHelp" step="0.01" placeholder="0">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="distance">Distance (in kilometres)</label>
-                    <input type="number" value="{{$activity->distance}}" name="distance" class="form-control" id="distance" aria-describedby="numberHelp" step="0.01" placeholder="0">
+                <div class="form-group col-md-12">
+                    <label for="customRange2">Your Mood</label>
+                    <input type="range" name="mood" class="custom-range {{$errors->has('mood') ? 'is-invalid' : '' }}" value="{{$mood->indicator}}" min="1" max="10" id="moodInput" oninput="moodOutput.value = moodInput.value">
+                    @if($errors->has('mood'))
+                        <span class="invalid-feedback font-weight-bold">
+                            * {{$errors->first('mood')}}
+                        </span>
+                    @endif
+                    <div class="mx-auto text-center">
+                        <i class="far fa-sad-tear fa-3x p-2 float-left"></i>
+                        <i class="far fa-meh fa-3x p-2"></i>
+                        <i class="far fa-smile-beam fa-3x p-2 float-right"></i>
+                        <br>
+                        <output class="text-center mx-auto pt-4 mood-output" name="mood-output" id="moodOutput">{{$mood->indicator}}</output>
+                    </div>
                 </div>
             </div>
-            <a href="{{ URL()->previous() }}" class="btn btn-danger float-left">x Cancel</a>
-            <button type="submit" class="btn btn-success float-right">Update Activity <i class="fas fa-check fa-2x"></i></button>
+            <a href="{{ URL()->previous() }}" class="btn btn-danger float-left"><i class="fa fa-remove fa-1x p-2"></i> Cancel</a>
+            <button type="submit" class="btn btn-success float-right">Update Mood <i class="fa fa-check fa-1x p-2"></i></button>
         </form>
     </div>
 @endsection
