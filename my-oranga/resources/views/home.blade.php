@@ -1,21 +1,23 @@
 @extends('layouts.app')
 
+@section('main-class', 'main-home')
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="mt-4">
+    <h1 class="text-left text-h1-large">A Wellness Tool Designed for You.</h1>
+    </div>
+    <div class="flex-center position-ref full-height">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
+            <blockquote class="blockquote">
+                <h1 class="mb-2">"If you can dream it, you can do it."</h1>
+                <footer class="blockquote-footer">Walt Disney</footer>
+            </blockquote>
+        </div>
+        <div class="col-md-4 border-left">
+            <div class="mx-auto text-center">
+                <h3 class="py-3">Get Started.</h3>
+                <a href="{{route('login')}}" class="btn btn-outline-dark btn-lg mx-2">Login</a>
+                <a href="{{route('register')}}" class="btn btn-outline-dark btn-lg mx-2">Register</a>
             </div>
         </div>
     </div>

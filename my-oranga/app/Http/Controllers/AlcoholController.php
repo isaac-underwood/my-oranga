@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Alcohol;
 
 class AlcoholController extends Controller
 {
@@ -23,7 +24,7 @@ class AlcoholController extends Controller
      */
     public function create()
     {
-        //
+        return view('alcohol.create');
     }
 
     /**
@@ -56,7 +57,8 @@ class AlcoholController extends Controller
      */
     public function edit($id)
     {
-        //
+        $alcohol = Alcohol::find($id);
+        return view('alcohol.edit', compact('alcohol'));
     }
 
     /**
@@ -79,6 +81,11 @@ class AlcoholController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $alcohol = Alcohol::find($id);
+        $alcohol->delete();
+
+        return redirect()
+        ->route('home')
+        ->with('status','You successfully deleted the alcohol record.');
     }
 }

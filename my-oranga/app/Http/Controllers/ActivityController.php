@@ -38,7 +38,7 @@ class ActivityController extends Controller
     {
         //validation rules
         $rules = [
-            'start-date' => 'required|date',
+            'start_date' => 'required|date',
             'end-date'  => 'required|date',
             'activity'     =>  'required|string|min:1',
             'time' => 'required|numeric',
@@ -49,7 +49,7 @@ class ActivityController extends Controller
             '*.required' => 'Please fill out this field.',
         ];
         //First Validate the form data
-        // $request->validate($rules,$messages);
+         $request->validate($rules,$messages);
         
         $activity = new Activity;
         $activity->user_id = Auth::user()->id;
@@ -61,7 +61,7 @@ class ActivityController extends Controller
         $activity->save();
 
         return redirect()
-            ->route('activities.create')
+            ->route('home')
             ->with('status','Added ' . $activity->minutes . ' minute ' . $activity->type . ' on ' . $activity->date);
     }
 
@@ -97,7 +97,34 @@ class ActivityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validation rules
+        $rules = [
+            'start_date' => 'required|date',
+            'end-date'  => 'required|date',
+            'activity'     =>  'required|string|min:1',
+            'time' => 'required|numeric',
+            'distance' => 'required|numeric'
+        ];
+        //custom validation error messages
+        $messages = [
+            '*.required' => 'Please fill out this field.',
+        ];
+        //First Validate the form data
+         $request->validate($rules,$messages);
+        
+        $activity = Activity::find($id);
+        $activity->user_id = Auth::user()->id;
+        $activity->date = $request->start_date;
+        // $acitivty->end_date = $request->end_date;
+        $activity->type = $request->activity;
+        $activity->minutes = $request->time;
+        $activity->distance = $request->distance;
+        $activity->save();
+
+        return redirect()
+            ->route('home')
+            ->with('status','Successfully updated your ' . $activity->type . ' that is on ' . $activity->date);
+        
     }
 
     /**
@@ -108,6 +135,10 @@ class ActivityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $activity = Activity::find($id);
+        $activity->delete();
+        return redirect()
+        ->route('home')
+        ->with('status','Successfully deleted the activity.');
     }
 }

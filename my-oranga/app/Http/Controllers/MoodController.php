@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mood;
+use Auth;
+use Carbon\Carbon;
 
 class MoodController extends Controller
 {
@@ -34,7 +37,25 @@ class MoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation rules
+        $rules = [
+            'date' => 'required|date',
+            'mood'     =>  'required|min:1|max:10',
+        ];
+        //custom validation error messages
+        $messages = [
+            'date.required' => 'Please enter the date for your mood.',
+        ];
+        $request->validate($rules, $messages);
+        $mood = new Mood;
+        $mood->user_id = Auth::user()->id;
+        $mood->date = $request->date;
+        $mood->indicator = $request->mood;
+        $mood->save();
+
+        return redirect()
+            ->route('home')
+            ->with('status','You added your mood for ' . $mood->date . '. It was a ' . $mood->indicator);
     }
 
     /**
@@ -56,7 +77,8 @@ class MoodController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mood = Mood::find($id);
+        return view('moods.edit', compact('mood'));
     }
 
     /**
@@ -68,7 +90,25 @@ class MoodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validation rules
+        $rules = [
+            'date' => 'required|date',
+            'mood'     =>  'required|min:1|max:10',
+        ];
+        //custom validation error messages
+        $messages = [
+            'date.required' => 'Please enter the date for your mood.',
+        ];
+        $request->validate($rules, $messages);
+        $mood = Mood::find($id);
+        $mood->user_id = Auth::user()->id;
+        $mood->date = $request->date;
+        $mood->indicator = $request->mood;
+        $mood->save();
+
+        return redirect()
+            ->route('home')
+            ->with('status','You updated your mood for ' . $mood->date);
     }
 
     /**
@@ -79,6 +119,11 @@ class MoodController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $mood = Mood::find($id);
+        $mood->delete();
+        
+        return redirect()
+        ->route('home')
+        ->with('status','You successfully deleted the mood.');
     }
 }
