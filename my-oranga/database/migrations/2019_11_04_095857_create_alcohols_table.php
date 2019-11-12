@@ -17,8 +17,8 @@ class CreateAlcoholsTable extends Migration
             $table->increments('id');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('nutrition_id')->unsigned();
-            $table->foreign('nutrition_id')->references('id')->on('nutrition');
+            $table->integer('kj');
+            $table->integer('calories');
             $table->date('date');
             $table->string('item');
             $table->integer('standard_drink');

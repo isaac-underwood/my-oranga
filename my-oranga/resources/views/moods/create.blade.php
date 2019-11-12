@@ -9,8 +9,10 @@
         </div>
     </div>
     <div class="container">
-        <h5 class="text-center">Your last mood was a</h5>
-        <h4 class="text-center">7</h4>
+        @if($last_mood != null)
+            <h5 class="text-center">Your last mood was a</h5>
+            <h4 class="text-center">{{$last_mood->indicator}}</h4>
+        @endif
         <form action="{{route('moods.store')}}" method="post" class="form">
             @csrf
             <div class="form-row">

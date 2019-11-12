@@ -82,7 +82,7 @@
 </head>
 <body>
     <div id="app">
-        @include('inc.navbar')
+        {{--@include('inc.navbar')--}}
 
         <main class="py-4 @yield('main-class')">
             @yield('content')

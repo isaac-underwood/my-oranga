@@ -26,7 +26,8 @@ class MoodController extends Controller
      */
     public function create()
     {
-        return view('moods.create');
+        $last_mood = Mood::where('user_id', Auth::user()->id)->latest('date')->first();
+        return view('moods.create', compact('last_mood'));
     }
 
     /**
