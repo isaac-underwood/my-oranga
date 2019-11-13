@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Alcohol;
+use Auth;
 
 class AlcoholController extends Controller
 {
@@ -39,19 +40,33 @@ class AlcoholController extends Controller
         $rules = [
             'date' => 'required|date',
             'item' =>  'required|min:1',
-            'std' => 'required|number',
+            'std' => 'required|numeric|min:1',
+            'energy_amount' => 'required|numeric'
         ];
 
         //custom validation error messages
         $messages = [
             'date.required' => 'Please enter the date for your alcohol consumption.',
             'item.required' => 'Please enter the alcohol item.',
-            'std.required' => 'Please enter the amount of standard drinks.'
+            'std.required' => 'Please enter the amount of standard drinks.',
+            'energy_amount.required' => 'Please enter the amount of energy for the item.'
         ];
 
         $request->validate($rules, $messages);
+        $alcohol = new Alcohol;
 
-        $alcohol = new Mood;
+        //Calculate calories
+        if ($request->energy_type == "kj")
+        {
+            $alcohol->kj = $request->energy_amount;
+            $alcohol->calories = $request->energy_amount * 0.239;
+        }
+        else
+        {
+            $alcohol->calories = $request->energy_amount;
+            $alcohol->kj = $request->energy_amount * 4.184;
+        }
+        
         $alcohol->user_id = Auth::user()->id;
         $alcohol->date = $request->date;
         $alcohol->item = $request->item;
@@ -95,7 +110,47 @@ class AlcoholController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //validation rules
+        $rules = [
+            'date' => 'required|date',
+            'item' =>  'required|min:1',
+            'std' => 'required|numeric|min:1',
+            'energy_amount' => 'required|numeric|min:1'
+        ];
+        
+        //custom validation error messages
+        $messages = [
+            'date.required' => 'Please enter the date for your alcohol consumption.',
+            'item.required' => 'Please enter the alcohol item.',
+            'std.required' => 'Please enter the amount of standard drinks.',
+            'energy_amount.required' => 'Please enter the amount of energy for the item.'
+        ];
+        
+        $request->validate($rules, $messages);
+        $alcohol = Alcohol::find($id);
+        
+        //Calculate calories
+        if ($request->energy_type == "kj")
+        {
+            $alcohol->kj = $request->energy_amount;
+            $alcohol->calories = $request->energy_amount * 0.239;
+        }
+        else
+        {
+            $alcohol->calories = $request->energy_amount;
+            $alcohol->kj = $request->energy_amount * 4.184;
+        }
+        
+        $alcohol->user_id = Auth::user()->id;
+        $alcohol->date = $request->date;
+        $alcohol->item = $request->item;
+        $alcohol->standard_drink = $request->std;
+        $alcohol->save();
+        
+        return redirect()
+            ->route('home')
+            ->with('status','You updated an alcohol consumption record for ' . $alcohol->date);
+        
     }
 
     /**
