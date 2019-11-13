@@ -11,6 +11,7 @@
     <div class="container">
         <form action="{{route('snacks.update', $snack->id)}}" method="post" class="form">
             @csrf
+            {{ method_field('PATCH') }}
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="date">Date</label>
