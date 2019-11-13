@@ -18,7 +18,7 @@ class CreateWeightsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->date('date');
-            $table->double('kg', 3, 2);
+            $table->double('kg', 5, 2);
             $table->timestamps();
         });
     }
