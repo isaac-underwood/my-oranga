@@ -10,7 +10,7 @@
     <div class="container">
         @if($last_sleep != null)
             <h5 class="text-center">Your last recorded sleep was for</h5>
-            <h4 class="text-center">{{$last_sleep->hours}} hour(s)</h4>
+            <h4 class="text-center">{{$last_sleep->hours}} hours</h4>
         @endif
         <form action="{{route('sleep.store')}}" method="post" class="form">
             @csrf
