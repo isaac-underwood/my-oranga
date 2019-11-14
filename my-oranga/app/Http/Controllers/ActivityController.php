@@ -39,10 +39,9 @@ class ActivityController extends Controller
         //validation rules
         $rules = [
             'start_date' => 'required|date',
-            'end-date'  => 'required|date',
             'activity'     =>  'required|string|min:1',
             'time' => 'required|numeric',
-            'distance' => 'required|numeric'
+            'distance' => 'numeric'
         ];
         //custom validation error messages
         $messages = [
@@ -100,7 +99,6 @@ class ActivityController extends Controller
         //validation rules
         $rules = [
             'start_date' => 'required|date',
-            'end-date'  => 'required|date',
             'activity'     =>  'required|string|min:1',
             'time' => 'required|numeric',
             'distance' => 'required|numeric'
