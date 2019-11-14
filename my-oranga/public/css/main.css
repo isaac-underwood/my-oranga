@@ -1,3 +1,40 @@
+/*HOME PAGE*/
+.main-home{
+    background-color: rgb(0, 0, 22);
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.897);
+}
+
+.home-landing{
+    margin: 7% auto;
+}
+
+.brand-handwriting{
+    font-family: 'Dancing Script', cursive;
+}
+
+.home-landing-image{
+    width: 100% !important;
+    height: 80vh !important;
+    position: relative;
+}
+.quote-home{
+    color: rgba(255, 255, 255, 0.788);
+    font-size: 2em;
+    margin-top: 7%;
+}
+
+.blockquote
+
+.home-welcome-message{
+    color: rgba(0, 0, 0, 0.705);
+}
+
+.home-get-started{}
+/********/
+
 .fas{
     font-size: 3em !important;
 }
@@ -30,7 +67,11 @@ h1{
     font-size: 3.6em;
 }
 
-p, a{
+    h1.h1-large{
+        font-size: 4.5em;
+    }
+
+p, a, .btn, option{
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 1.2em;
     letter-spacing: 0.3px;
@@ -38,6 +79,10 @@ p, a{
 
 a.btn, .btn{
     font-size: 1.2em;
+}
+
+.record-heading{
+    font-size: 4.5rem;
 }
 
 /*COMPARE PAGE*/
@@ -49,4 +94,32 @@ a.btn, .btn{
 .background-bad{
     background: rgb(255,173,173);
     background: radial-gradient(circle, rgba(255,173,173,1) 10%, rgba(255,173,173,0.8743698162858894) 90%); 
+}
+
+/* RECORD LANDING PAGE*/
+.record-landing{
+    margin-top: 18%;
+}
+
+/* DASHBOARD STYLES*/
+.dashboard-strip{
+    padding: 2%;
+    color: rgba(0, 0, 0, 0.705);
+}
+.dashboard-goal-strip{
+    background-color: rgba(156, 217, 255, 0.568);
+    border: 1px solid rgba(125, 205, 255, 0.5);
+}
+
+.dashboard-record-strip{
+    
+    background-color: rgba(218, 239, 252, 0.568);
+}
+
+.icon-large{
+    font-size: 4.3em !important;
+}
+
+.dashboard-row-spacing{
+    margin: 7% auto !important;
 }
