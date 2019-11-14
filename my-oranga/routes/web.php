@@ -13,6 +13,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/compare', 'ComparisonController@showCompare')->middleware('auth')->name('compare');
 
 Route::resource('/activities', 'ActivityController')->middleware('auth');
 Route::resource('/alcohol', 'AlcoholController')->middleware('auth');
