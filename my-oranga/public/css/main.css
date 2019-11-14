@@ -9,3 +9,44 @@
 .header h1{
     padding-top: 10vh;
 }
+
+/* FORM STYLES*/
+.mood-output{
+    font-size: 2em;
+}
+
+label{
+    font-size: 1.2em;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* TEXT STYLES*/
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.7px;
+}
+
+h1{
+    font-size: 3.6em;
+}
+
+p, a{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.2em;
+    letter-spacing: 0.3px;
+}
+
+a.btn, .btn{
+    font-size: 1.2em;
+}
+
+/*COMPARE PAGE*/
+.background-good{
+    background: rgb(176,255,197);
+    background: radial-gradient(circle, rgba(176,255,197,1) 10%, rgba(176,255,197,0.8463586118040967) 90%)
+}
+
+.background-bad{
+    background: rgb(255,173,173);
+    background: radial-gradient(circle, rgba(255,173,173,1) 10%, rgba(255,173,173,0.8743698162858894) 90%); 
+}
