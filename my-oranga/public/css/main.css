@@ -23,7 +23,16 @@
 .quote-home{
     color: rgba(255, 255, 255, 0.788);
     font-size: 2em;
-    margin-top: 7%;
+    margin-top: 3%;
+}
+
+.hr-white-home{
+    border-color: #fff;
+    width: 5%;
+}
+
+.home-get-started{
+    margin-top: 3%;
 }
 
 .blockquote
@@ -32,9 +41,12 @@
     color: rgba(0, 0, 0, 0.705);
 }
 
-.home-get-started{}
 /********/
 
+.auth-page p, label, .card-header{
+    color: initial;
+    font-size: 1.2em !important;
+}
 .fas{
     font-size: 3em !important;
 }
