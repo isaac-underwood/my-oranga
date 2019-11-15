@@ -33,7 +33,10 @@ class HomeController extends Controller
             $total_alcohol_drinks = Auth::user()->alcohols()->whereBetween('date', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('standard_drink');
             $total_exercise_minutes = Auth::user()->activities()->whereBetween('date', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('minutes');
             $total_exercise_distance = Auth::user()->activities()->whereBetween('date', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('distance');
-            return view('dashboard', compact('total_alcohol_drinks', 'total_exercise_minutes', 'total_exercise_distance'));
+            $average_mood = Auth::user()->moods()->whereBetween('date', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->avg('indicator');
+            $total_calories = Auth::user()->snacks()->whereBetween('date', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('calories');
+            $latest_weight = Auth::user()->weights()->whereBetween('date', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->latest('date')->first();
+            return view('dashboard', compact('total_alcohol_drinks', 'total_exercise_minutes', 'total_exercise_distance', 'average_mood', 'total_calories', 'latest_weight'));
         }
     }
 }

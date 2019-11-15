@@ -79,19 +79,22 @@
             <div class="col-md-4 p-2">
                 <i class="far fa-smile-beam icon-large"></i>
                 <br>
-                <h1 class="pt-2">7 / 10</h1>
+                <h1 class="pt-2">{{number_format($average_mood, 1)}} / 10</h1>
                 <h2>Average Mood</h2>
             </div>
             <div class="col-md-4 p-2">
                 <i class="fas fa-cookie-bite icon-large"></i>
                 <br>
-                <h1 class="pt-2">923 cal</h1>
+                <h1 class="pt-2">{{$total_calories}} cal</h1>
                 <h2>Snack Food</h2>
             </div>
             <div class="col-md-4 p-2">
                 <i class="fas fa-balance-scale icon-large"></i>
                 <br>
-                <h1 class="pt-2">94 kg</h1>
+                <h1 class="pt-2">@if($latest_weight)
+                {{$latest_weight->kg}}
+                @else 0
+                @endif kg</h1>
                 <h2>Weight</h2>
             </div>
         </div>

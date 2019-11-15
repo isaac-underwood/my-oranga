@@ -6,8 +6,10 @@
     <div class="row mx-auto">
         <div class="col-md-12">
             <h1 class="h1-large text-center d-inline-block brand-handwriting">My</h1><h1 class="h1-large text-center d-inline-block">Oranga</h1>
+            
         </div>
     </div>
+    <hr>
     <div class="row">
         <div class="col-md-12">
             <h3 class="my-2">A Wellness Tool Designed for You.</h3>

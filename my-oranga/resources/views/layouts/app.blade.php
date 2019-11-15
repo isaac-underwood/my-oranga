@@ -88,6 +88,18 @@
 
         <main class="py-4 @yield('main-class')">
             @yield('content')
+            <a href="">
+            <div id="mybutton">
+                <div class="feedback"></div>
+            </div>
+            </a>
+        
+            <div class="coach-wrapper">
+            
+                <div class="coach"></div>
+                
+            </div>
+            
         </main>
     </div>
     <script src="{{asset('js/app.js')}}"></script> {{-- <- bootstrap and jquery --}}
@@ -106,6 +118,10 @@
             $(".alert").alert('close');
         }, 6000);
         });
+
+        document.getElementById('coach').addEventListener('click', () => {
+            alert('hi')
+        })
     </script>
     <style>
     .alert{
