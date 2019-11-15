@@ -9,6 +9,7 @@
             <hr class="hr-white-home">
         </div>
     </div>
+    <hr>
     <div class="row">
         <div class="col-md-12">
             <h3 class="my-2">A Wellness Tool Designed for You.</h3>

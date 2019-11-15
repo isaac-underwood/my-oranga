@@ -135,3 +135,37 @@ a.btn, .btn{
 .dashboard-row-spacing{
     margin: 7% auto !important;
 }
+
+/* COACH STYLES */
+.coach-wrapper{
+    position: fixed;
+    width: 250px;
+    height: auto;
+    background-color: red;
+}
+
+.coach{
+    background-image: url('../img/coach.jpg') !important;
+}
+
+.feedback {
+    color: white;
+    padding: 10px 20px;    
+    width: 100%;
+  }
+  
+  #mybutton {
+    position: fixed;
+    bottom: 3%;
+    width: 5%;
+    height: 160px;
+    right: 3%;
+    background-image: url('../img/coach-clipart-transparent.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+
+  }
+
+  .test{
+      display: block;
+  }
