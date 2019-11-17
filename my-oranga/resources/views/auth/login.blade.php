@@ -1,7 +1,13 @@
 @extends('layouts.app')
-
+@section('main-class', 'main-home')
 @section('content')
-<div class="container">
+<div class="container full-height auth-page">
+    <div class="row mx-auto">
+        <div class="col-md-12">
+            <h1 class="h1-large text-center d-inline-block brand-handwriting">My</h1><h1 class="h1-large text-center d-inline-block">Oranga</h1>
+            <hr class="hr-white-home">
+        </div>
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

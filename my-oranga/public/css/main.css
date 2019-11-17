@@ -1,3 +1,7 @@
+body{
+    overflow-x: hidden;
+}
+
 /*HOME PAGE*/
 .main-home{
     background-color: rgb(0, 0, 22);
@@ -83,8 +87,8 @@ h1{
         font-size: 4.5em;
     }
 
-p, a, .btn, option{
-    font-family: 'Source Sans Pro', sans-serif;
+p, a, .btn, option, .modal-body{
+    font-family: 'Source Sans Pro', sans-serif !important;
     font-size: 1.2em;
     letter-spacing: 0.3px;
 }
@@ -154,9 +158,9 @@ a.btn, .btn{
     width: 100%;
   }
   
-  #mybutton {
+  #coachbutton {
     position: fixed;
-    bottom: 3%;
+    bottom: 4%;
     width: 5%;
     height: 160px;
     right: 3%;
@@ -166,6 +170,22 @@ a.btn, .btn{
 
   }
 
-  .test{
-      display: block;
-  }
+.ask-coach-text{
+    bottom: 1%;
+    right: 3%;
+    position: fixed;
+}
+
+    .ask-coach-text a:hover{
+        text-decoration: none;
+    }
+
+.modal-content{
+}
+.modal-title{
+    font-size: 2em;
+}
+
+.modal-body{
+    font-size: 1.3em;
+}
