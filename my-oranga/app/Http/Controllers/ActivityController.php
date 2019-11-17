@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 use Illuminate\Http\Request;
 use App\Activity;
 use Auth;
@@ -62,6 +63,59 @@ class ActivityController extends Controller
         return redirect()
             ->route('home')
             ->with('status','Added ' . $activity->minutes . ' minute ' . $activity->type . ' on ' . $activity->date);
+    }
+
+    public function calendar()
+    {
+        $events = [];
+        $data = Activity::where('user_id', Auth::user()->id)->get();
+
+        if ($data->count())
+        {
+            foreach ($data as $key => $value)
+            {
+                switch (strtoupper($value->type))
+                {
+                    case "RUN":
+                        $color = "green";
+                        break;
+                    case "WALK":
+                        $color = "orange";
+                        break;
+                    case "SURF":
+                        $color = "blue";
+                        break;
+                    case "SWIM":
+                        $color = "blue";
+                        break;
+                    case "YOGA":
+                        $color = "red";
+                        break;
+                    case "GYM":
+                        $color = "brown";
+                        break;
+                    default:
+                        $color = "grey";
+                        break;
+                }
+
+                $events[] = Calendar::event(
+                    $value->type,
+                    true,
+                    new \DateTime($value->date),
+                    new \DateTime($value->date.'+1 day'),
+                    null,
+                    //Add colours
+                    [
+                        'color' => $color,
+                        'textColor' => 'white',
+                    ]
+                    );
+            }
+        }
+
+        $calendar = Calendar::addEvents($events);
+        return view('calendar', compact('calendar'));
     }
 
     /**
