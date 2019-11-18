@@ -19,6 +19,14 @@ Route::get('/compare', 'ComparisonController@showCompare')->middleware('auth')->
 Route::get('/calendar', 'ActivityController@calendar')->middleware('auth')->name('calendar');
 Route::get('/entries', 'PagesController@entries')->middleware('auth')->name('entries');
 Route::get('/results', 'PagesController@results')->middleware('auth')->name('results');
+Route::get('/entries/activities', 'EntriesController@activities')->name('entries.activities')->middleware('auth');
+Route::get('/entries/alcohol', 'EntriesController@alcohol')->name('entries.alcohol')->middleware('auth');
+Route::get('/entries/moods', 'EntriesController@moods')->name('entries.moods')->middleware('auth');
+Route::get('/entries/snacks', 'EntriesController@snacks')->name('entries.snacks')->middleware('auth');
+Route::get('/entries/sleep', 'EntriesController@sleep')->name('entries.sleep')->middleware('auth');
+Route::get('/entries/targets', 'EntriesController@targets')->name('entries.targets')->middleware('auth');
+Route::get('/entries/weights', 'EntriesController@weights')->name('entries.weights')->middleware('auth');
+
 
 //RESOURCE Routes
 Route::resource('/activities', 'ActivityController')->middleware('auth');
