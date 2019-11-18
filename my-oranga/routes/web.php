@@ -10,12 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 
+//GET Routes
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/compare', 'ComparisonController@showCompare')->middleware('auth')->name('compare');
 Route::get('/calendar', 'ActivityController@calendar')->middleware('auth')->name('calendar');
+Route::get('/entries', 'PagesController@entries')->middleware('auth')->name('entries');
 
+//RESOURCE Routes
 Route::resource('/activities', 'ActivityController')->middleware('auth');
 Route::resource('/alcohol', 'AlcoholController')->middleware('auth');
 Route::resource('/moods', 'MoodController')->middleware('auth');
