@@ -2,6 +2,21 @@ body{
     overflow-x: hidden;
 }
 
+footer{
+    
+}
+
+    footer a{
+        color: inherit;
+    }
+
+        footer a:hover{
+            color: rgb(77, 84, 87);
+        }
+
+main{
+    margin-bottom: 6%;
+}
 /*HOME PAGE*/
 .main-home{
     background-color: rgb(0, 0, 22);
