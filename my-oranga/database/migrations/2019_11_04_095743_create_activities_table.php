@@ -19,8 +19,9 @@ class CreateActivitiesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->date('date');
             $table->string('type');
+            $table->string('location');
             $table->integer('minutes');
-            $table->double('distance', 4, 2);
+            $table->double('distance', 4, 2)->nullable();
             $table->timestamps();
         });
     }
