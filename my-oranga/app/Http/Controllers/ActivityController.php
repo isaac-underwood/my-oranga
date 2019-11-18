@@ -42,6 +42,7 @@ class ActivityController extends Controller
             'start_date' => 'required|date',
             'activity'     =>  'required|string|min:1',
             'time' => 'required|numeric',
+            'location' => 'required|string|min:1',
             'distance' => 'numeric'
         ];
         //custom validation error messages
@@ -55,6 +56,7 @@ class ActivityController extends Controller
         $activity->user_id = Auth::user()->id;
         $activity->date = $request->start_date;
         // $acitivty->end_date = $request->end_date;
+        $activity->location = $request->location;
         $activity->type = $request->activity;
         $activity->minutes = $request->time;
         $activity->distance = $request->distance;
@@ -62,7 +64,7 @@ class ActivityController extends Controller
 
         return redirect()
             ->route('home')
-            ->with('status','Added ' . $activity->minutes . ' minute ' . $activity->type . ' on ' . $activity->date);
+            ->with('status','Added ' . $activity->minutes . ' minute ' . $activity->type . ' on ' . $activity->date . ' at ' . $activity->location);
     }
 
     public function calendar()
@@ -155,6 +157,7 @@ class ActivityController extends Controller
             'start_date' => 'required|date',
             'activity'     =>  'required|string|min:1',
             'time' => 'required|numeric',
+            'location' => 'required|string|min:1',
             'distance' => 'required|numeric'
         ];
         //custom validation error messages
@@ -167,6 +170,7 @@ class ActivityController extends Controller
         $activity = Activity::find($id);
         $activity->user_id = Auth::user()->id;
         $activity->date = $request->start_date;
+        $activity->location = $request->location;
         // $acitivty->end_date = $request->end_date;
         $activity->type = $request->activity;
         $activity->minutes = $request->time;
@@ -175,7 +179,7 @@ class ActivityController extends Controller
 
         return redirect()
             ->route('home')
-            ->with('status','Successfully updated your ' . $activity->type . ' that is on ' . $activity->date);
+            ->with('status','Successfully updated your ' . $activity->type . ' that is on ' . $activity->date . ' at ' . $activity->location);
         
     }
 

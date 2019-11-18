@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use Carbon\Carbon;
 
 class PagesController extends Controller
 {
@@ -23,5 +24,14 @@ class PagesController extends Controller
         }
 
         return view('results')->with('activity_type', json_encode($activity_type_array));
+    }
+
+    public function entries()
+    {
+        $activities = Auth::user()->activities()->paginate(1, ['*'], 'activities');
+        $alcohols = Auth::user()->alcohols()->paginate(1, ['*'], 'alcohols');
+        $moods = Auth::user()->moods()->paginate(1, ['*'], 'moods');
+
+        return view('entries', compact('activities', 'alcohols', 'moods'));
     }
 }
