@@ -140,10 +140,11 @@ a.btn, .btn{
 .dashboard-goal-strip{
     background-color: rgba(156, 217, 255, 0.568);
     border: 1px solid rgba(125, 205, 255, 0.5);
+    color: rgba(0, 0, 0, 0.705);
 }
 
 .dashboard-record-strip{
-    
+    color: rgba(0, 0, 0, 0.705);
     background-color: rgba(218, 239, 252, 0.568);
 }
 
@@ -195,12 +196,21 @@ a.btn, .btn{
         text-decoration: none;
     }
 
-.modal-content{
-}
 .modal-title{
     font-size: 2em;
 }
 
 .modal-body{
     font-size: 1.3em;
+}
+
+/* RESULTS PAGE*/
+.bests-strip{
+    background-color: rgba(160, 255, 160, 0.75);
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.chart{
+    width: 100%;
+    height: 400px
 }

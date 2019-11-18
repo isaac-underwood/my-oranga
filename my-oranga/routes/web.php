@@ -18,6 +18,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/compare', 'ComparisonController@showCompare')->middleware('auth')->name('compare');
 Route::get('/calendar', 'ActivityController@calendar')->middleware('auth')->name('calendar');
 Route::get('/entries', 'PagesController@entries')->middleware('auth')->name('entries');
+Route::get('/results', 'PagesController@results')->middleware('auth')->name('results');
 
 //RESOURCE Routes
 Route::resource('/activities', 'ActivityController')->middleware('auth');
