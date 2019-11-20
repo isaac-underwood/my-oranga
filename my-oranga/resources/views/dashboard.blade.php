@@ -19,6 +19,14 @@
             <h2 class="mx-auto">Snack Goal</h2>
             <h2 class="mx-auto">Alcohol Goal</h2>
         </div>
+        <div class="row pt-5">
+            <div class="col-md-6 mx-auto">
+                <a href="{{route('entries.targets')}}" class="btn btn-outline-primary">Manage Targets <i class="fa fa-list fa-1x pl-2"></i></a>
+            </div>
+            <div class="col-md-6 mx-auto">
+                <a href="{{route('targets.create')}}" class="btn btn-outline-success">Create Target <i class="fa fa-plus fa-1x pl-2"></i></a>
+            </div>
+        </div>
     </div>
 </div>
 <div class="dashboard-strip dashboard-record-strip text-center">
@@ -27,34 +35,35 @@
         <h4>Update your wellness information</h4>
         <div class="row pt-2 text-center">
             <div class="col-md-2">
-                <a href="{{route('activities.create')}}" class="btn btn-outline-dark btn-lg m-4">ACTIVITY</a>
+                <a href="{{route('activities.create')}}" class="btn btn-outline-light btn-lg m-4">ACTIVITY</a>
             </div>
             <div class="col-md-2">
-                <a href="{{route('alcohol.create')}}" class="btn btn-outline-dark btn-lg m-4">ALCOHOL</a>
+                <a href="{{route('alcohol.create')}}" class="btn btn-outline-light btn-lg m-4">ALCOHOL</a>
             </div>
             <div class="col-md-2">
-                <a href="{{route('moods.create')}}" class="btn btn-outline-dark btn-lg m-4">MOOD</a>
+                <a href="{{route('moods.create')}}" class="btn btn-outline-light btn-lg m-4">MOOD</a>
             </div>
             <div class="col-md-2">
-                <a href="{{route('sleep.create')}}" class="btn btn-outline-dark btn-lg m-4">SLEEP</a>
+                <a href="{{route('sleep.create')}}" class="btn btn-outline-light btn-lg m-4">SLEEP</a>
             </div>
             <div class="col-md-2">
-                <a href="{{route('snacks.create')}}" class="btn btn-outline-dark btn-lg m-4">SNACK</a>
+                <a href="{{route('snacks.create')}}" class="btn btn-outline-light btn-lg m-4">SNACK</a>
             </div>
             <div class="col-md-2">
-                <a href="{{route('weights.create')}}" class="btn btn-outline-dark btn-lg m-4">WEIGHT</a>
+                <a href="{{route('weights.create')}}" class="btn btn-outline-light btn-lg m-4">WEIGHT</a>
             </div>
         </div>
         <div class="row text-center">
             <div class="col-md-12">
-                <a href="{{route('targets.create')}}" class="btn btn-outline-dark btn-lg m-4">TARGET</a>
+                <a href="{{route('targets.create')}}" class="btn btn-outline-light btn-lg m-4">TARGET</a>
             </div>
         </div>
     </div>
 </div>
-<div class="dashboard-strip dashboard-this-week-strip text-center">
+<div class="dashboard-strip text-center">
     <div class="container">
         <h1 class="pb-3 h1-large">This Week</h1>
+        <a href="{{route('results')}}" class="btn btn-outline-primary">View Lifetime <i class="fa fa-heartbeat fa-1x pl-2"></i></a>
         <div class="row dashboard-row-spacing">
             <div class="col-md-4 p-2">
                 <i class="fas fa-wine-glass-alt icon-large"></i>

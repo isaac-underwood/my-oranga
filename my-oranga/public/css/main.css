@@ -19,15 +19,37 @@ main{
 }
 /*HOME PAGE*/
 .main-home{
-    background-color: rgb(0, 0, 22);
+    background: linear-gradient(231deg, #000016, #01355f);
+    background-size: 400% 400%;
+    
+    -webkit-animation: AnimationName 8s ease infinite;
+    -moz-animation: AnimationName 8s ease infinite;
+    animation: AnimationName 8s ease infinite;
+    
+    
     width: 100%;
     overflow: hidden;
     text-align: center;
     color: rgba(255, 255, 255, 0.897);
 }
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 90%}
+    50%{background-position:100% 11%}
+    100%{background-position:0% 90%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 90%}
+    50%{background-position:100% 11%}
+    100%{background-position:0% 90%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 90%}
+    50%{background-position:100% 11%}
+    100%{background-position:0% 90%}
+}
 
 .home-landing{
-    margin: 7% auto;
+    margin: 3% auto;
 }
 
 .brand-handwriting{
@@ -43,6 +65,7 @@ main{
     color: rgba(255, 255, 255, 0.788);
     font-size: 2em;
     margin-top: 3%;
+    padding-top: 1%;
 }
 
 .hr-white-home{
@@ -51,13 +74,18 @@ main{
 }
 
 .home-get-started{
-    margin-top: 3%;
+    margin-top: 1%;
+    padding: 1%;
 }
 
 .blockquote
 
 .home-welcome-message{
     color: rgba(0, 0, 0, 0.705);
+}
+
+.home-brand{
+    font-size: 7.5em !important;
 }
 
 /********/
@@ -138,15 +166,18 @@ a.btn, .btn{
     color: rgba(0, 0, 0, 0.705);
 }
 .dashboard-goal-strip{
-    background-color: rgba(156, 217, 255, 0.568);
-    border: 1px solid rgba(125, 205, 255, 0.5);
-    color: rgba(0, 0, 0, 0.705);
+    color: rgba(0, 0, 0, 0.87);
+    background-color: rgba(241, 241, 241, 0.753);
+
 }
 
 .dashboard-record-strip{
-    color: rgba(0, 0, 0, 0.705);
-    background-color: rgba(218, 239, 252, 0.568);
+    background-color: rgb(0, 1, 36);
+    border: 1px solid rgba(125, 205, 255, 0.5);
+    color: rgba(255, 255, 255, 0.897);
+
 }
+
 
 .icon-large{
     font-size: 4.3em !important;
