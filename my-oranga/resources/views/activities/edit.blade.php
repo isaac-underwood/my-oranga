@@ -22,14 +22,25 @@
                     @endif
                 </div>
             </div>
-            <div class="form-group">
-                <label for="activity">Activity</label>
-                <input type="text" value="{{$activity->type}}" class="form-control {{$errors->has('activity') ? 'is-invalid' : '' }}" id="activity" placeholder="e.g. Run, Walk, Skate, Surf, etc.">
-                @if($errors->has('activity'))
-                        <span class="invalid-feedback font-weight-bold">
-                            * {{$errors->first('activity')}}
-                        </span>
-                @endif            
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="activity">Activity</label>
+                    <input type="text" value="{{$activity->type}}" class="form-control {{$errors->has('activity') ? 'is-invalid' : '' }}" name="activity" id="activity" placeholder="e.g. Run, Walk, Skate, Surf, etc.">
+                    @if($errors->has('activity'))
+                            <span class="invalid-feedback font-weight-bold">
+                                * {{$errors->first('activity')}}
+                            </span>
+                    @endif
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="location">Location</label>
+                    <input type="text" value="{{$activity->location}}" class="form-control {{$errors->has('location') ? 'is-invalid' : '' }}" name="location" id="location" placeholder="e.g. Beach, Gym, etc.">
+                    @if($errors->has('location'))
+                            <span class="invalid-feedback font-weight-bold">
+                                * {{$errors->first('location')}}
+                            </span>
+                    @endif
+                </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">

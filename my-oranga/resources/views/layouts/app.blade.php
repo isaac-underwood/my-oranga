@@ -172,6 +172,7 @@
         </div>
     </div>
     @endif
+    @include('inc.footer')
     <script type="text/javascript">
     </script>
     <script>
