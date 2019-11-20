@@ -88,7 +88,7 @@
     <div id="app">
         @include('inc.navbar')
 
-        <main class="py-4 @yield('main-class')">
+        <main class="mt-4 pt-4 @yield('main-class')">
             @yield('content')
             @if(Auth::check())
             <a href="#" id="askcoach">
@@ -104,7 +104,7 @@
         </main>
     </div>
     @if(session('status')) {{-- <- If session key exists --}}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
             {{session('status')}} {{-- <- Display the session value --}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
