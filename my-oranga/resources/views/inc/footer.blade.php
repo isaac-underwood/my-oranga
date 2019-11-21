@@ -18,7 +18,7 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="text-uppercase font-weight-bold">
-          <a href="#">Results</a>
+          <a href="{{route('results')}}">Results</a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -34,7 +34,7 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="text-uppercase font-weight-bold">
-          <a href="#!">Help</a>
+          <a href="{{route('entries')}}">Entries</a>
         </h6>
       </div>
       <!-- Grid column -->
@@ -42,7 +42,7 @@
       <!-- Grid column -->
       <div class="col-md-2 mb-3">
         <h6 class="text-uppercase font-weight-bold">
-          <a href="#!">Contact</a>
+          <a href="{{route('calendar')}}">Calendar</a>
         </h6>
       </div>
       <!-- Grid column -->
