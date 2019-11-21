@@ -5,14 +5,12 @@
     <div class="container">
         <h2>Hello, {{Auth::user()->name}}.</h2>
         <h1 class="h1-large">Target Summary</h1>
-
+    {{$recent_targets}}
         <div class="row mt-5">
-            <div class="ldBar label-center mx-auto" style="width:15%;height:15%;" data-value="75" data-preset="circle" 
+            @foreach($recent_targets as $target)
+            <div class="ldBar label-center mx-auto" style="width:15%;height:15%;" data-value="{{Carbon::parse($target->end_date)->diff(Carbon::now())}}" data-max="{{Carbon::parse($target->start_date)->diff(Carbon::parse($target->end_date))}}" data-preset="circle" 
             data-transition-in="on-load" data-stroke-width="8"></div>
-            <div class="ldBar label-center mx-auto" style="width:15%;height:15%;" data-value="35" data-preset="circle" 
-            data-transition-in="on-load" data-stroke-width="8"></div>
-            <div class="ldBar label-center mx-auto" style="width:15%;height:15%;" data-value="52" data-preset="circle" 
-            data-transition-in="on-load" data-stroke-width="8"></div>
+            @endforeach
         </div>
         <div class="row">
             <h2 class="mx-auto">Fitness Goal</h2>

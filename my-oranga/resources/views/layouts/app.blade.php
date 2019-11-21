@@ -88,7 +88,7 @@
     <div id="app">
         @include('inc.navbar')
 
-        <main class="mt-4 pt-4 @yield('main-class')">
+        <main class="@yield('main-class')">
             @yield('content')
             @if(Auth::check())
             <a href="#" id="askcoach">

@@ -5,6 +5,26 @@
     <div class="container">
         <h1 class="h1-large">My Results</h1>
         <i class="fas fa-poll icon-large pt-4"></i>
+        <div class="row pt-5">
+                <div class="col-md-6">
+                    <h2>Activity Type</h2>
+                    <div class="chart" id="activity-type-chart"></div>
+                </div>
+                <div class="col-md-6">
+                    <h2>Snack Calories</h2>
+                    <div class="chart" id="curve_chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-5">
+                <div class="col-md-6">
+                    <h2>Activity Type</h2>
+                </div>
+                <div class="col-md-6">
+                    <h2>Snack Calories</h2>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="dashboard-strip dashboard-record-strip bests-strip text-center">
@@ -25,7 +45,6 @@
                 <h2>Exercise</h2>
             </div>
         </div>
-        <hr>
         <div class="row dashboard-row-spacing">
             <div class="col-md-6 p-2">
                 <i class="fas fa-bed icon-large"></i>
@@ -63,7 +82,7 @@
                 <i class="fas fa-running icon-large"></i>
                 <br>
                 <h1 class="pt-2">{{Auth::user()->activities()->count()}}</h1>
-                <h2>Total Activities Recorded</h2>
+                <h2>Activities Recorded</h2>
             </div>
         </div>
         <hr>
@@ -85,6 +104,7 @@
                 <br>
                 <h1 class="pt-2">{{Auth::user()->snacks()->sum('calories')}} cal</h1>
                 <h2>Total Snacks</h2>
+                <h2>({{Auth::user()->snacks()->sum('kj')}} kJ)</h2>
             </div>
         </div>
         <hr>
@@ -109,27 +129,16 @@
             </div>
         </div>
     </div>
-<div class="container">
-    <div class="row">
-            <div class="col-md-6">
-                <h2>Activity Type</h2>
-                <div class="chart" id="activity-type-chart"></div>
-            </div>
-            <div class="col-md-6">
-                <h2>Snacks</h2>
-                <div class="chart" id="snacks-chart"></div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       var typeAnalytics = <?php echo $activity_type; ?>;
-      var snackAnalytics = <?php echo $snack_total; ?>;
+      var snackTimeAnalytics = <?php echo $snack_time; ?>;
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawTypeChart);
       google.charts.setOnLoadCallback(drawSnacksChart);
+      google.charts.setOnLoadCallback(drawChart);
 
       function drawTypeChart() {
 
@@ -157,9 +166,26 @@
         pieSliceText: 'label'
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('activity-type-chart'));
+        var activityTypeChart = new google.visualization.PieChart(document.getElementById('activity-type-chart'));
+
+        activityTypeChart.draw(data, options);
+
+        
+      }
+
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(snackTimeAnalytics);
+
+        var options = {
+          backgroundColor: 'transparent',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
         chart.draw(data, options);
-      }
+    }
     </script>
 @endsection
