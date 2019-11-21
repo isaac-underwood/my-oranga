@@ -32,7 +32,12 @@
     </div>
     <div class="row d-flex justify-content-center text-center">
         <div class="col-md-12 pb-4">
-            <h2>Moods</h2>
+            <h1>Moods</h1>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-right text-right">
+        <div class="col-md-12 pb-4">
+            <a href="{{route('moods.create')}}" class="btn btn-outline-success">Add Mood <i class="fa fa-plus fa-1x pl-2"></i></a>
         </div>
     </div>
 <div id="activities" class="table-responsive">

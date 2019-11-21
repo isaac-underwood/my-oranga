@@ -32,7 +32,12 @@
     </div>
     <div class="row d-flex justify-content-center text-center">
         <div class="col-md-12 pb-4">
-            <h2>Alcohol</h2>
+            <h1>Alcohol</h1>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-right text-right">
+        <div class="col-md-12 pb-4">
+            <a href="{{route('alcohol.create')}}" class="btn btn-outline-success">Add Alcohol <i class="fa fa-plus fa-1x pl-2"></i></a>
         </div>
     </div>
 <div id="activities" class="table-responsive">
